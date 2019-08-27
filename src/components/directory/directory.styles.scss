@@ -1,0 +1,13 @@
+.space{
+    margin: 50px;
+}
+
+.directory-menu{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: 200px 300px;
+    grid-gap: 1rem;
+    grid-template-areas:
+    "c c c c s s s s j j j j"
+    "m m m m m m w w w w w w" 
+}

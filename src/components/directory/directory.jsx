@@ -41,13 +41,13 @@ export class Directory extends Component{
         return(
             <>
             <div className="space">
-            <div className='directory-menu'>
-                {
-                    this.state.sections.map(({id, ...otherSectionProps})=>(
-                    <MenuItem key={id} {...otherSectionProps} />
-                    ))
-                }
-            </div>
+                <div className='directory-menu'>
+                    {
+                        this.state.sections.map(({id, ...otherSectionProps})=>(
+                        <MenuItem key={id} {...otherSectionProps} />
+                        ))
+                    }
+                </div>
             </div>
             </>
         );

@@ -4,6 +4,9 @@ import React, {Component} from 'react';
 import SHOP_DATA from './shop_data';
 import CollectionPreview from '../../components/collection-preview/collection-preview';
 
+// css
+import './shop.styles.scss';
+
 class Shop extends Component{
     constructor(props){
         super(props);
@@ -13,7 +16,6 @@ class Shop extends Component{
     }
 
     render(){
-        // {this.state.shop_data.map(({id, ...otherShopData})=>console.log(id));}
         return(
             <>
             <div className="shop-items">

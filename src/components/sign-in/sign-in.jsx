@@ -27,6 +27,9 @@ class SignIn extends Component{
 
     render(){
         return(
+            <>
+            <h3>Already have an Account?</h3>
+            <h4>Sign In</h4>
             <form onSubmit={this.handleSubmit}>
                 <FormInput handleChange={this.handleChange} name="email" type="email" label="email" value={this.state.email} required/>
 
@@ -35,6 +38,7 @@ class SignIn extends Component{
                 <Button type="submit" value="Sign In" input_class="signin-button"/>
                 <Button onClick={signInWithGoogle} type="button" input_class="signin-button-google" value="Sign In With Google"/>                
             </form>
+            </>
         );
     }
 }

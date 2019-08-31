@@ -1,6 +1,7 @@
 import React from 'react';
 // custom imports
 import SignIn from '../../components/sign-in/sign-in';
+import SignUp from '../../components/sign-up/sign-up';
 //css
 import './sign-in-and-sign-up.styles.scss';
 
@@ -13,7 +14,7 @@ const SignInAndSignUp = ()=>{
                 </div>
 
                 <div className="signup">
-                    signup
+                    <SignUp/>
                 </div>
             </div>
         </>

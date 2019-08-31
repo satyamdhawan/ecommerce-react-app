@@ -10,8 +10,8 @@ import {Switch, Route} from 'react-router-dom';
 import { Homepage } from './pages/homepage/homepage';
 import Header from './components/header/header'; 
 import Shop from './pages/shop/shop';
-import { auth } from './firebase/firebase-util';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up';
+import { auth, createUserProfileDocument } from './firebase/firebase-util';
 
 class App extends Component{
   constructor(){
@@ -25,9 +25,25 @@ class App extends Component{
   unSubscribeFromAuth =  null;
 
   componentDidMount(){
-    this.unSubscribeFromAuth=auth.onAuthStateChanged((user)=>{
-      this.setState({ currentUser : user });
-      console.log(user);
+    this.unSubscribeFromAuth=auth.onAuthStateChanged(async (userAuth)=>{
+      // if not null
+      if(userAuth){
+        // call the createUserProfileDocument function to get the userRef
+        const userRef=await createUserProfileDocument(userAuth);
+        // userRef has a function onSnapshot that gives a document snapShot object 
+        // which has a data function which gives us all the data about the user
+        // after getting the data we set it by calling setState function
+        userRef.onSnapshot((snapShot)=>{
+            this.setState({currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }});
+          }
+        );
+      }
+      else{
+        this.setState({ currentUser : userAuth });
+      }
     });
   }
 
